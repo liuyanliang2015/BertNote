@@ -23,13 +23,15 @@ git push -u origin master
 ![](https://github.com/liuyanliang2015/BertNote/blob/master/pics/git-push.png)
 
 ##二：再次编辑
-
-### 1：上传项目
+### 1:提交文件前，先更新本地仓库
+git pull
+### 2：上传本地文件
 上传单个文件：git add README.md
 上传所有文件：git add .
-### 2：推送内容到远程仓库
+### 3：推送内容到远程仓库
 git push -u origin master
 ![](https://github.com/liuyanliang2015/BertNote/blob/master/pics/git-push.png)
+
 
 
 
