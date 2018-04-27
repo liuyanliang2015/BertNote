@@ -1,6 +1,6 @@
 # Git常用命令
 
-##一：第一次使用git
+## 一：第一次使用git
 ### 1：首先给git上创建新的仓库Repository
 ### 2：复制新建仓库的https地址
 https://github.com/liuyanliang2015/test.git
@@ -22,7 +22,7 @@ $ git remote add origin https://github.com/liuyanliang2015/test.git
 git push -u origin master
 ![](https://github.com/liuyanliang2015/BertNote/blob/master/pics/git-push.png)
 
-##二：再次编辑
+## 二：再次编辑
 ### 1:提交文件前，先更新本地仓库
 git pull
 ### 2：上传本地文件
