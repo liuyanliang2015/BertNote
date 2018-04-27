@@ -19,3 +19,12 @@
 # JVM案例
 ![JVM内存模型案例](https://github.com/liuyanliang2015/BertNote/blob/master/pics/JVM-demo.png)
 
+# linux查看内存情况
+使用jmap -heap 线程id，查看堆内存配置
+![linux查看堆配置](https://github.com/liuyanliang2015/BertNote/blob/master/pics/jmap-heap.png)
+使用jstat -gc 线程id  时间间隔，来查看GC情况
+![linux查看GC情况](https://github.com/liuyanliang2015/BertNote/blob/master/pics/jstat-gc.png)
+
+
+
+
