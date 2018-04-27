@@ -13,10 +13,12 @@ touch README.md
 上传所有文件：git add .
 ## 6：提交文件，备注提交说明
 git commit -m "first commit"
+![](https://github.com/liuyanliang2015/BertNote/blob/master/pics/git-commit.png)
 ## 7:关联远程仓库
 $ git remote add origin https://github.com/liuyanliang2015/test.git
 ## 8：推送内容到远程仓库
 git push -u origin master
+![](https://github.com/liuyanliang2015/BertNote/blob/master/pics/git-push.png)
 
 
 
