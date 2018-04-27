@@ -1,7 +1,7 @@
 # 目录说明
-###[第一部分：notes(技术点笔记)](https://github.com/liuyanliang2015/BertNote/tree/master/notes) <br>
-###[第二部分：interview(面试总结)](https://github.com/liuyanliang2015/BertNote/tree/master/interview) <br>
-###[第三部分：environment(环境搭建)](https://github.com/liuyanliang2015/BertNote/tree/master/environment)
+## [第一部分：notes(技术点笔记)](https://github.com/liuyanliang2015/BertNote/tree/master/notes) <br>
+## [第二部分：interview(面试总结)](https://github.com/liuyanliang2015/BertNote/tree/master/interview) <br>
+## [第三部分：environment(环境搭建)](https://github.com/liuyanliang2015/BertNote/tree/master/environment)
 
 ## 第一部分:notes
 ### [1: git命令](https://github.com/liuyanliang2015/BertNote/blob/master/notes/01%20Git%E5%91%BD%E4%BB%A4.md)
