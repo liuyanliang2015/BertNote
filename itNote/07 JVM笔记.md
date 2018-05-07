@@ -28,5 +28,65 @@ JRE：Java API类库中的Java SE API子集和Java虚拟机两部分统称为JRE
 
 具体分析过程可以参考：[JVM内存分析](https://github.com/liuyanliang2015/BertNote/blob/master/itNote/02%20JVM%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90.md "JVM内存分析")
 
+### 对象访问
+
+    Object obj = new Object();
+“Object obj”这部分语义将会反映到Java栈的本地变量表中，作为一个reference(引用)类型数据出现。访问堆中对象的具体位置的主流方式有：使用句柄和直接指针。<br>
+
+“new Object()”这部分语义将会反应到java堆中，形成一块存储Object类型所有实例数据值的结构化内存，另外Java堆中还必须包含能查找次对象数据(父类、实现的接口、方法等)的地址信息，这些类型数据存储在方法区中。
+
+### 模拟内存溢出
+#### 堆溢出
+
+    public class TestOutOfMemory {
+	public static void main(String[] args) {
+		List<String> list = new ArrayList<String>();
+		while(true){
+			list.add("abcdefg");
+		}
+	}
+
+	}
 
 
+![JVM内存溢出](https://github.com/liuyanliang2015/BertNote/blob/master/pics/heap-out.png)
+
+    Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
+	at java.util.Arrays.copyOf(Arrays.java:2245)
+	at java.util.Arrays.copyOf(Arrays.java:2219)
+	at java.util.ArrayList.grow(ArrayList.java:242)
+	at java.util.ArrayList.ensureExplicitCapacity(ArrayList.java:216)
+	at java.util.ArrayList.ensureCapacityInternal(ArrayList.java:208)
+	at java.util.ArrayList.add(ArrayList.java:440)
+	at com.test.TestOutOfMemory.main(TestOutOfMemory.java:10)
+
+
+
+#### 栈溢出
+
+    /**
+	 * A:使用-Xss参数减少栈内存的容量，结果抛出java.lang.StackOverflowError，异常出现的栈深度相应缩小
+	 * B:定义大量的本地变量，增加此方法帧中本地变量表的长度，结果StackOverflowError异常出现的栈深度相应缩小
+	 * -Xss256k  stackLength:2488
+	 * -Xss128k  stackLength:1005
+	 */
+	public class TestOutOfMemory2 {
+		private int stackLength = 1;
+		public void stackLeak(){
+			stackLength ++;
+			stackLeak();
+		}
+		public static void main(String[] args) {
+			TestOutOfMemory2 t = new TestOutOfMemory2();
+			try {
+				t.stackLeak();
+			} catch (Throwable e) {
+				System.out.println("stackLength:"+t.stackLength);
+				//e.printStackTrace();
+				throw e;
+			}
+		
+	}
+
+
+![JVM内存溢出](https://github.com/liuyanliang2015/BertNote/blob/master/pics/stack-out.png)
