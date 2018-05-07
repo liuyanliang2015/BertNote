@@ -90,3 +90,12 @@ JRE：Java API类库中的Java SE API子集和Java虚拟机两部分统称为JRE
 
 
 ![JVM内存溢出](https://github.com/liuyanliang2015/BertNote/blob/master/pics/stack-out.png)
+
+
+栈溢出抛出StackOverflowError错误，出现此种情况是因为方法运行的时候栈的深度超过了虚拟机容许的最大深度所致。对于栈内存溢出，根据《Java 虚拟机规范》中文版：如果线程请求的栈容量超过栈允许的最大容量的话，Java 虚拟机将抛出一个StackOverflow异常；如果Java虚拟机栈可以动态扩展，并且扩展的动作已经尝试过，但是无法申请到足够的内存去完成扩展，或者在新建立线程的时候没有足够的内存去创建对应的虚拟机栈，那么Java虚拟机将抛出一个OutOfMemory 异常。例子中递归调用了构造函数，故导致StackOverflowError
+
+### 运行时常量池异常
+
+如果要向运行时常量池中添加内容，最简单的做法就是使用String.intern()这个Native方法。该方法的作用是：如果常量池中已经包含一个等于此String对象的字符串，则返回代表池中这个字符串的String对象；否则，将此String对象包含的字符串添加到常量池，并且返回此String对象的引用。
+
+因为常量池在方法区中，我们可以通过-XX:PermSize和-XX:MaxPermSize限制方法区的大小，从而间接限制其中常量池的容量。
