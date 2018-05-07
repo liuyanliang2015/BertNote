@@ -26,5 +26,7 @@ JRE：Java API类库中的Java SE API子集和Java虚拟机两部分统称为JRE
 
 >不过，也正是因为这样，一旦出现内初泄漏和内存溢出方面的问题，如果不了解虚拟机是怎样管理内存的，那排查错误将会是一项异常艰难的工作。
 
+具体分析过程可以参考：[JVM内存分析](https://github.com/liuyanliang2015/BertNote/blob/master/itNote/02%20JVM%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90.md "JVM内存分析")
+
 
 
