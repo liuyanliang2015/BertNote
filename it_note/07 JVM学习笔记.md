@@ -156,6 +156,30 @@ Java虚拟机规范中对垃圾回收器应该如何实现没有规定，因此�
 这里简单说一下G1回收器：G1回收器是垃圾回收器理论进一步发展的产物。一是，G1收集器采用的是基于“标记-整理”算法实现的。二是它可以非常精确地控制停顿，既能让使用者明确指定在一个长度为M毫秒的时间片段内，消耗在垃圾回收器上的时间不得超过N毫秒。
 
 
+### Full GC
+![heap](https://github.com/liuyanliang2015/BertNote/blob/master/pics/stack-out.png) <br>
+
+从年轻代空间（包括 Eden 和 Survivor 区域）回收内存被称为 Minor GC，对老年代GC称为Major GC,而Full GC是对整个堆来说的，在最近几个版本的JDK里默认包括了对永生带即方法区的回收（JDK8中无永生带了），出现Full GC的时候经常伴随至少一次的Minor GC,但非绝对的。Major GC的速度一般会比Minor GC慢10倍以上。下边看看有那种情况触发JVM进行Full GC及应对策略。
+
+**A:System.gc()方法的调用** <br>
+此方法的调用是建议JVM进行Full GC,虽然只是建议而非一定,但很多情况下它会触发 Full GC,从而增加Full GC的频率,也即增加了间歇性停顿的次数。强烈影响系建议能不使用此方法就别使用，让虚拟机自己去管理它的内存，可通过通过-XX:+ DisableExplicitGC来禁止RMI调用System.gc。
+
+**B:老年代空间不足** <br>
+老年代空间只有在新生代对象转入及创建为大对象、大数组时才会出现不足的现象，当执行Full GC后空间仍然不足，则抛出如下错误：<br>
+java.lang.OutOfMemoryError: Java heap space <br>
+为避免以上两种状况引起的Full GC，调优时应尽量做到让对象在Minor GC阶段被回收、让对象在新生代多存活一段时间及不要创建过大的对象及数组。<br>
+
+**C：永生区(jdk1.8已废弃)空间不足**<br>
+JVM规范中运行时数据区域中的方法区，在HotSpot虚拟机中又被习惯称为永生代或者永生区，Permanet Generation中存放的为一些class的信息、常量、静态变量等数据，当系统中要加载的类、反射的类和调用的方法较多时，Permanet Generation可能会被占满，在未配置为采用CMS GC的情况下也会执行Full GC。如果经过Full GC仍然回收不了，那么JVM会抛出如下错误信息：<br>
+java.lang.OutOfMemoryError: PermGen space <br>
+为避免Perm Gen占满造成Full GC现象，可采用的方法为增大Perm Gen空间或转为使用CMS GC。<br>
+
+**D：堆中分配很大的对象**<br>
+所谓大对象，是指需要大量连续内存空间的java对象，例如很长的数组，此种对象会直接进入老年代，而老年代虽然有很大的剩余空间，但是无法找到足够大的连续空间来分配给当前对象，此种情况就会触发JVM进行Full GC。
+
+
+
+
 ## 五：虚拟机性能监控与故障处理工具
 Java开发人员可能都知道JDK的bin目录下面的“java.exe和Javac.exe”这两个命令行工具，但并非所有程序员都了解过JDK的bin目录下其他的命令行程序的作用。<br>
 
