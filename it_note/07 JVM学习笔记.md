@@ -203,18 +203,25 @@ jmap命令用于生成堆转存储快照(dump文件，可以用eclipse插件打�
 jmap -dump :生成java堆转存储快照
 jmap -heap :显示java堆详细信息，使用哪种收集器，参数配置，分代状况等等。
 
-![jmap命令行工具](https://github.com/liuyanliang2015/BertNote/blob/master/pics/jmap-heap1.png)
+![jmap命令行工具](https://github.com/liuyanliang2015/BertNote/blob/master/pics/jmap-heap1.png)<br>
 ![jmap命令行工具](https://github.com/liuyanliang2015/BertNote/blob/master/pics/jmap-heap2.png)
 
 ### jconsole：java监视与管理控制台
 在命令行执行jconsole，就可以打开控制台：<br>
-![jconsole命令行工具](https://github.com/liuyanliang2015/BertNote/blob/master/pics/jconsole.png)
-![jconsole命令行工具](https://github.com/liuyanliang2015/BertNote/blob/master/pics/jconsole2.png)
-![jconsole命令行工具](https://github.com/liuyanliang2015/BertNote/blob/master/pics/jconsole3.png)
+![jconsole命令行工具](https://github.com/liuyanliang2015/BertNote/blob/master/pics/jconsole.png)<br>
+![jconsole命令行工具](https://github.com/liuyanliang2015/BertNote/blob/master/pics/jconsole2.png)<br>
+![jconsole命令行工具](https://github.com/liuyanliang2015/BertNote/blob/master/pics/jconsole3.png)<br>
 
 
 
+## 线程安全的实现方法
+A：不可变<br>
+在java语言里，不可变的对象一定是线程安全的，这种安全性是最简单最纯粹的，例如final。
 
+
+B：互斥同步<br>
+Java里面，最基本的互斥同步手段就是synchronized关键字。<br>
+我们还可以使用java.util.concurrent包中的重入锁(ReentrantLock)来实现同步。
 
 
 
