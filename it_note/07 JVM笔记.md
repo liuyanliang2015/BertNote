@@ -156,6 +156,32 @@ Java虚拟机规范中对垃圾回收器应该如何实现没有规定，因此�
 这里简单说一下G1回收器：G1回收器是垃圾回收器理论进一步发展的产物。一是，G1收集器采用的是基于“标记-整理”算法实现的。二是它可以非常精确地控制停顿，既能让使用者明确指定在一个长度为M毫秒的时间片段内，消耗在垃圾回收器上的时间不得超过N毫秒。
 
 
+## 五：虚拟机性能监控与故障处理工具
+Java开发人员可能都知道JDK的bin目录下面的“java.exe和Javac.exe”这两个命令行工具，但并非所有程序员都了解过JDK的bin目录下其他的命令行程序的作用。<br>
+
+我们会发现bin下面的程序大小体积基本都稳定在16KB左右(JDK1.7),这是因为这些命令行工具大多数都是jdk\lib\tools.jar类库的一层包装而已，它们的主要功能代码是在tools类库中实现的。<bin>
+
+当程序部署到生产环境后，无论是直接接触物理服务器还是远程telnet到服务器都是受限制的，借助tools.jar类库中的接口，我们可以直接在应用程序中实现功能强大的监控分析功能。
+
+### jps虚拟机进程状况工具
+
+    [root@localhost ~]# jps -l
+	26814 org.apache.catalina.startup.Bootstrap
+	1349 org.apache.catalina.startup.Bootstrap
+	8901 com.aliyun.tianji.cloudmonitor.Application
+	14503 sun.tools.jps.Jps
+
+功能类似：ps <br>
+![JVM内存溢出](https://github.com/liuyanliang2015/BertNote/blob/master/pics/ps.png)
+
+jps -q :只输出进程id <br>
+jps -m :输出虚拟机进程启动时，传递给主类main()函数的参数 <br>
+jps -l :输出主类的全名，如果进程执行的是jar包，输出jar路径 <br>
+jps -v :输出虚拟机进程启动时的JVM参数
+
+
+
+
 
 
 
