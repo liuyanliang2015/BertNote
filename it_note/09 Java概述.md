@@ -74,6 +74,14 @@ JVM上执行java字节码，执行时这些字节码可以解释成具体平台�
 
 ![JVM原理](https://github.com/liuyanliang2015/BertNote/blob/master/pics/jvm-info.png)
 
+## Java环境搭建
+请参考：[Java环境搭建](https://github.com/liuyanliang2015/BertNote/blob/master/environment_build/01%20java%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.md)<br>
+
+配置path的目的：为了在任意路径下，都可以执行javac和java命令<br>
+
+配置classpath的目的：保证在任意目录下访问并运行class文件<br>
+
+
 
 
 

@@ -3,28 +3,28 @@ Redis是一种高级key-value数据库。它跟memcached类似，不过数据可
 
 Redis的所有数据都是保存在内存中，然后不定期的通过异步方式保存到磁盘上(这称为“半持久化模式”)；也可以把每一次数据变化都写入到一个append only file(aof)里面(这称为“全持久化模式”)。 
 
-##redis安装
+## redis安装
 https://blog.csdn.net/freedomwjx/article/details/78602490
 
 linux服务器redis.conf上配置bind 0.0.0.0 任何客户端都可以访问
 
 
-##检测后台进程是否存在
+## 检测后台进程是否存在
 ps -ef |grep redis
 
-##检测6379端口是否在监听
+## 检测6379端口是否在监听
 netstat -lntp | grep 6379
 
 
 
-##redis启动
+## redis启动
 [root@localhost redis-4.0.9]# redis-server redis.conf &
 
 
-##redis关闭
+## redis关闭
 [root@localhost redis-4.0.9]# src/redis-cli -a lzz5699  shutdown
 
-##redis持久化策略与配置
+## redis持久化策略与配置
 
 ### RDB持久化
 RDB持久化是指在指定的时间间隔内将内存中的数据集快照写入磁盘，实际操作过程是fork一个子进程，先将数据集写入临时文件，写入成功后，再替换之前的文件，用二进制压缩存储。<br>
