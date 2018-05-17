@@ -178,6 +178,20 @@ java.lang.OutOfMemoryError: PermGen space <br>
 所谓大对象，是指需要大量连续内存空间的java对象，例如很长的数组，此种对象会直接进入老年代，而老年代虽然有很大的剩余空间，但是无法找到足够大的连续空间来分配给当前对象，此种情况就会触发JVM进行Full GC。
 
 
+## 类生命周期
+![类生命周期](https://github.com/liuyanliang2015/BertNote/blob/master/pics/class-load.png)
+
+有且只有下列五种情况必须对类进行初始化（加载、验证、准备都会随着发生）：
+
+A：遇到 new、getstatic、putstatic、invokestatic 这四条字节码指令时，如果类没有进行过初始化，则必须先触发其初始化。最常见的生成这 4 条指令的场景是：使用 new 关键字实例化对象的时候；读取或设置一个类的静态字段（被 final 修饰、已在编译期把结果放入常量池的静态字段除外）的时候；以及调用一个类的静态方法的时候。
+
+B：使用 java.lang.reflect 包的方法对类进行反射调用的时候，如果类没有进行初始化，则需要先触发其初始化。
+
+C：当初始化一个类的时候，如果发现其父类还没有进行过初始化，则需要先触发其父类的初始化。
+
+D：当虚拟机启动时，用户需要指定一个要执行的主类（包含 main() 方法的那个类），虚拟机会先初始化这个主类；
+
+E：当使用 JDK.7 的动态语言支持时，如果一个 java.lang.invoke.MethodHandle 实例最后的解析结果为 REF_getStatic, REF_putStatic, REF_invokeStatic 的方法句柄，并且这个方法句柄所对应的类没有进行过初始化，则需要先触发其初始化；
 
 
 ## 五：虚拟机性能监控与故障处理工具
