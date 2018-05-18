@@ -51,10 +51,10 @@
 ![JVM内存模型案例](https://github.com/liuyanliang2015/BertNote/blob/master/pics/JVM-demo.png)
 
 
-![JVM内存模型案例](https://github.com/liuyanliang2015/BertNote/blob/master/pics/JVM-demo2.png)
+![JVM内存模型案例](https://github.com/liuyanliang2015/BertNote/blob/master/pics/jvm-demo2.png)
 
 
-![JVM内存模型案例](https://github.com/liuyanliang2015/BertNote/blob/master/pics/JVM-demo3.png)
+![JVM内存模型案例](https://github.com/liuyanliang2015/BertNote/blob/master/pics/jvm-demo3.png)
 
 
 
