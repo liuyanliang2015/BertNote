@@ -122,11 +122,41 @@ JRE：Java API类库中的Java SE API子集和Java虚拟机两部分统称为JRE
 打印GC的详细信息
 ![GC打印信息](https://github.com/liuyanliang2015/BertNote/blob/master/pics/jvm-printGC.png)
 
-
 -XX:+PrintGCTimeStamps
 打印GC发生的时间戳
 
-    [GC[DefNew: 4416K->0K(4928K), 0.0001897 secs] 4790K->374K(15872K), 0.0002232 secs] [Times: user=0.00 sys=0.00, real=0.00 secs] 
+    [GC[DefNew: 4416K->0K(4928K), 0.0001897 secs] 4790K->374K(15872K), 0.0002232 secs] 
+    [Times: user=0.00 sys=0.00, real=0.00 secs] 
+
+-XX:+PrintHeapAtGC 每一次GC后，都打印堆信息。
+![GC打印信息](https://github.com/liuyanliang2015/BertNote/blob/master/pics/jvm-demo4.png)
+
+
+-XX:+TraceClassLoading 监控类的加载
+-
+
+重定向GC log的位置，以文件输出,帮助开发人员跟踪问题：<br>
+-Xloggc:log/gc.log
+
+### 案例：
+
+JVM区域总体分两类，heap区和非heap区。 <br>
+heap区又分为：  <br>
+- Eden Space（伊甸园）、  <br>
+- Survivor Space(幸存者区)、  <br>
+- Old Gen（老年代）。 <br>
+
+非heap区又分：  <br>
+- Code Cache(代码缓存区)；  <br>
+- Perm Gen（永久代）；  <br>
+- Jvm Stack(java虚拟机栈)；  <br>
+- Local Method Statck(本地方法栈)； <br>
+
+![GC打印信息](https://github.com/liuyanliang2015/BertNote/blob/master/pics/GC-catalina.png)
+
+
+![GC打印信息](https://github.com/liuyanliang2015/BertNote/blob/master/pics/GC-log.png)
+
 
 
 
