@@ -108,6 +108,30 @@ JRE：Java API类库中的Java SE API子集和Java虚拟机两部分统称为JRE
 
 
 
+## JVM的常见配置参数
+
+### trace跟踪参数
+
+-verbose:gc 
+
+-XX:+printGC
+
+可以打印GC的简要信息。
+
+-XX:+PrintGCDetails
+打印GC的详细信息
+![GC打印信息](https://github.com/liuyanliang2015/BertNote/blob/master/pics/jvm-printGC.png)
+
+
+-XX:+PrintGCTimeStamps
+打印GC发生的时间戳
+
+    [GC[DefNew: 4416K->0K(4928K), 0.0001897 secs] 4790K->374K(15872K), 0.0002232 secs] [Times: user=0.00 sys=0.00, real=0.00 secs] 
+
+
+
+
+
 
 ## 四：垃圾回收器以及内存分配策略
 
