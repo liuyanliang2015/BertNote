@@ -158,6 +158,38 @@ heap区又分为：  <br>
 ![GC打印信息](https://github.com/liuyanliang2015/BertNote/blob/master/pics/GC-log.png)
 
 
+### 堆分配参数
+
+#### -Xmx -Xms
+指定最大堆和最小堆
+
+#### -Xmn
+设置新生代大小
+
+#### -XX:NewRatio
+新生代(eden+2*s)和老年代(不含永久区)的比例 <br>
+4表示新生代：老年代 = 1：4，即新生代占堆的1/5 <br>
+
+#### -XX:SurvivorRatio
+设置两个Survivor区和eden的比例<br>
+8表示两个Survivor：eden = 2：8 ，即一个Survivor区占年轻代的1/10<br>
+
+#### -XX:+HeapDumpOnOutOfMemorryError
+内存溢出的时候，到处堆到文件
+
+#### -XX:+HeapDumpPath
+导出内存溢出的文件路径
+
+#### -XX:OnOutOfMemoryError
+在内存溢出时，执行一个脚本（例如：发邮件、重启服务） <br>
+"-XX:OnOutOfMemoryError=/usr/local/sendMail.bat %p"
+
+
+
+
+
+
+
 
 
 ## 四：垃圾回收器以及内存分配策略
