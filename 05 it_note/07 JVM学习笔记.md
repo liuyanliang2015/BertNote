@@ -110,6 +110,19 @@ JRE：Java API类库中的Java SE API子集和Java虚拟机两部分统称为JRE
 
 ## JVM的常见配置参数
 
+JVM区域总体分两类，heap区和非heap区。 <br>
+heap区又分为：  <br>
+- Eden Space（伊甸园）、  <br>
+- Survivor Space(幸存者区)、  <br>
+- Old Gen（老年代）。 <br>
+
+非heap区又分：  <br>
+- Code Cache(代码缓存区)；  <br>
+- Perm Gen（永久代）；  <br>
+- Jvm Stack(java虚拟机栈)；  <br>
+- Local Method Statck(本地方法栈)； <br>
+
+
 ### trace跟踪参数
 
 -verbose:gc 
@@ -140,17 +153,9 @@ JRE：Java API类库中的Java SE API子集和Java虚拟机两部分统称为JRE
 
 ### 案例：
 
-JVM区域总体分两类，heap区和非heap区。 <br>
-heap区又分为：  <br>
-- Eden Space（伊甸园）、  <br>
-- Survivor Space(幸存者区)、  <br>
-- Old Gen（老年代）。 <br>
-
-非heap区又分：  <br>
-- Code Cache(代码缓存区)；  <br>
-- Perm Gen（永久代）；  <br>
-- Jvm Stack(java虚拟机栈)；  <br>
-- Local Method Statck(本地方法栈)； <br>
+      JAVA_OPTS="-server -Xms2048m -Xmx2048m  -XX:NewSize=512m -XX:MaxNewSize=512m 
+      -XX:PermSize=512m  -XX:MaxPermSize=512m -Djava.awt.headless=true 
+	  -verbose:gc -XX:+PrintHeapAtGC -Xloggc:/usr/local/tomcat_app/logs/gc.log "
 
 ![GC打印信息](https://github.com/liuyanliang2015/BertNote/blob/master/pics/GC-catalina.png)
 
