@@ -451,6 +451,21 @@ jmap -heap :显示java堆详细信息，使用哪种收集器，参数配置，�
 ![jconsole命令行工具](https://github.com/liuyanliang2015/BertNote/blob/master/pics/jconsole3.png)<br>
 
 
+## Stop the World
+Java中一种全局暂停现象。
+
+全局停顿，所有Java代码停止，native代码可以执行，但不能拿与JVM交互。
+
+多半是由于GC引起：<br>
+Dump线程<br>
+死锁检查<br>
+堆Dump<br>
+
+GC时为什么会有全局停顿？
+类比清理公共卫生间，如果不时有人上厕所，永远也打扫不干净。于是保洁阿姨在厕所门口贴了牌子“清理中，暂停使用”。
+
+危害：长时间服务停止，没有响应。
+
 
 ## 九：线程安全的实现方法
 A：不可变<br>
