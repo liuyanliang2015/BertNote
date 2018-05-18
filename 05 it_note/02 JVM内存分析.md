@@ -53,6 +53,10 @@
 
 ![JVM内存模型案例](https://github.com/liuyanliang2015/BertNote/blob/master/pics/JVM-demo2.png)
 
+
+![JVM内存模型案例](https://github.com/liuyanliang2015/BertNote/blob/master/pics/JVM-demo3.png)
+
+
 # linux查看内存情况
 使用jmap -heap 线程id，查看堆内存配置 <br>
 ![linux查看堆配置](https://github.com/liuyanliang2015/BertNote/blob/master/pics/jmap-heap.png) <br>
