@@ -87,7 +87,7 @@ JRE：Java API类库中的Java SE API子集和Java虚拟机两部分统称为JRE
 			try {
 				t.stackLeak();
 			} catch (Throwable e) {
-				System.out.println("stackLength:"+t.stackLength);
+				System.out.println("stackLength:"+t.stackLength); 
 				//e.printStackTrace();
 				throw e;
 			}
@@ -105,6 +105,9 @@ JRE：Java API类库中的Java SE API子集和Java虚拟机两部分统称为JRE
 如果要向运行时常量池中添加内容，最简单的做法就是使用String.intern()这个Native方法。该方法的作用是：如果常量池中已经包含一个等于此String对象的字符串，则返回代表池中这个字符串的String对象；否则，将此String对象包含的字符串添加到常量池，并且返回此String对象的引用。
 
 因为常量池在方法区中，我们可以通过-XX:PermSize和-XX:MaxPermSize限制方法区的大小，从而间接限制其中常量池的容量。
+
+
+
 
 ## 四：垃圾回收器以及内存分配策略
 

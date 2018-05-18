@@ -47,7 +47,7 @@
 
 
 
-# JVM案例
+## JVM案例
 ![JVM内存模型案例](https://github.com/liuyanliang2015/BertNote/blob/master/pics/JVM-demo.png)
 
 
@@ -57,7 +57,29 @@
 ![JVM内存模型案例](https://github.com/liuyanliang2015/BertNote/blob/master/pics/JVM-demo3.png)
 
 
-# linux查看内存情况
+
+## 线程可见性
+
+每一个线程有一个工作内存和共享主内存。
+
+工作内存存放主内存中变量的值的拷贝。
+
+如果需要在其他线程中年立即可见，需要使用volatile关键字。
+
+可见性： 一个线程修改了变量，其他线程可以立即知道。
+
+### 保证可见性的方法：
+
+A： volatile
+
+B： synchronize（unlock之前，写变量值到主内存）
+
+C： final(一旦初始化完成，其他线程就可见)
+
+
+
+
+## linux查看内存情况
 使用jmap -heap 线程id，查看堆内存配置 <br>
 ![linux查看堆配置](https://github.com/liuyanliang2015/BertNote/blob/master/pics/jmap-heap.png) <br>
 
