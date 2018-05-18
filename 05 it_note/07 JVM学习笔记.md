@@ -184,12 +184,12 @@ heap区又分为：  <br>
 在内存溢出时，执行一个脚本（例如：发邮件、重启服务） <br>
 "-XX:OnOutOfMemoryError=/usr/local/sendMail.bat %p"
 
+#### -XX:PermSize -XX:MaxPermSize
+永久区初始化空间大小和最大空间大小
 
-
-
-
-
-
+#### -Xss
+栈大小分配<br>
+通常只有几百K，决定了函数调用的深度，每个线程都有独立的栈空间、局部变量和参数都分配在栈上。
 
 
 ## 四：垃圾回收器以及内存分配策略
