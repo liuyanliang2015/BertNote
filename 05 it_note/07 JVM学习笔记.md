@@ -42,6 +42,9 @@ JRE：Java API类库中的Java SE API子集和Java虚拟机两部分统称为JRE
 “new Object()”这部分语义将会反应到java堆中，形成一块存储Object类型所有实例数据值的结构化内存，另外Java堆中还必须包含能查找次对象数据(父类、实现的接口、方法等)的地址信息，这些类型数据存储在方法区中。
 
 ### 模拟内存溢出
+
+内存溢出OOM的原因：堆和线程栈、直接内存的空间之和超出了操作系统分配的内存总空间。
+
 #### 堆溢出
 
     public class TestOutOfMemory {
@@ -531,6 +534,25 @@ GC时为什么会有全局停顿？
 类比清理公共卫生间，如果不时有人上厕所，永远也打扫不干净。于是保洁阿姨在厕所门口贴了牌子“清理中，暂停使用”。
 
 危害：长时间服务停止，没有响应。
+
+
+## JIT编译原理以及参数：
+
+![JIT](https://github.com/liuyanliang2015/BertNote/blob/master/pics/JIT.png)<br>
+
+
+![JIT](https://github.com/liuyanliang2015/BertNote/blob/master/pics/JIT2.png)<br>
+
+
+
+-Xint 解释执行
+
+
+-Xcomp 全部编译执行
+
+-Xmixed 默认，混合
+
+
 
 
 ## 九：线程安全的实现方法
