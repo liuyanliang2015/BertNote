@@ -260,6 +260,66 @@ B：很难处理循环引用的问题
 这两块空间交替使用。只能使用一半的空间，浪费空间。
 
 
+### GC串行收集器
+
+最古老、最稳定的收集器，也是比较效率的，缺点是可能产生较长时间的停顿。
+
+-XX:+UseSerialGC
+
+新生代、老年代使用串行回收，新生代复制算法、老年代标记-压缩算法。
+
+![串行收集器](https://github.com/liuyanliang2015/BertNote/blob/master/pics/jvm-collect1.png)
+
+
+
+### GC并行收集器ParNew
+
+-XX:+UseParNewGC
+
+新生代并行，老年代串行
+
+多线程，需要多核支持
+
+-XX:ParallelGCThreads 限制线程数量
+
+![并行收集器](https://github.com/liuyanliang2015/BertNote/blob/master/pics/jvm-collect2.png)
+
+
+### GC并行收集器Parallel
+
+-XX:+UseParallelGC  使用Parallel收集器+老年代串行
+
+-XX:+UseParallelOldGC 使用Parallel收集器+老年代并行
+
+
+
+
+
+-XX:MaxGCPauseMills 最大停顿时间，单位毫秒
+
+GC尽力保证回收时间不超过设定值。
+
+
+-XX：GCTimeRatio  0-100的取值范围，垃圾回收集时间占总时间的比例
+
+默认99， 最大允许1%的时间做GC
+
+前面这两个参数是矛盾的，因为停顿时间和吞吐量不可能同时调优。
+
+### GC参数整理
+
+![GC参数整理](https://github.com/liuyanliang2015/BertNote/blob/master/pics/jvm-collect4.png)
+
+
+![GC参数整理](https://github.com/liuyanliang2015/BertNote/blob/master/pics/jvm-collect5.png)
+
+
+
+
+
+
+
+
 #### E:分代思想
 
 根据对象的存活周期的不同将内存划分为几块。一般是把Java堆分成新生代和老年代，这样就可以根据每个年代的特点采用最适当的收集算法。<br>
