@@ -73,3 +73,11 @@ find /etc -name "passwd" -exec ls -l {} \;
 编辑完成，按Esc键，切回命令模式。输入:wq!保存更改，强制退出。
 
 如果不想保存更改，直接:q!，不保存强制退出。
+
+
+## 启动服务
+nohup command &
+
+& 实现后台运行
+
+nohup命令可以在你退出帐户之后继续运行相应的进程。nohup就是不挂起的意思(no hang up)
