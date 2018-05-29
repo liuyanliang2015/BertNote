@@ -20,6 +20,9 @@
 
 ## [10：word(word文档)](https://github.com/liuyanliang2015/BertNote/tree/master/10%20word) <br>
 
+## [11：conding_standard(代码规范)](https://github.com/liuyanliang2015/BertNote/tree/master/11%20coding_standard) <br>
+
+## [12：linux(linux相关)](https://github.com/liuyanliang2015/BertNote/tree/master/12%20linux) <br>
 
 
 
