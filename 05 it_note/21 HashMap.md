@@ -3,6 +3,8 @@ Hash散列，将一个任意长度通过某种算法(hash算法)转成为一个�
 
 Map地图，x，y存储
 
+数组+链表的数据结构。
+
 总结：通过hash算出来得值，然后通过值定位到这个map，然后value存储到这个map中。
 
 ## HashMap源码
@@ -39,6 +41,19 @@ Map地图，x，y存储
     }
 
 
+
+	void addEntry(int hash, K key, V value, int bucketIndex) {
+        //扩容机制
+        if ((size >= threshold) && (null != table[bucketIndex])) {
+            resize(2 * table.length);
+            hash = (null != key) ? hash(key) : 0;
+            bucketIndex = indexFor(hash, table.length);
+        }
+
+        createEntry(hash, key, value, bucketIndex);
+    }
+
+
      final int hash(Object k) {
         int h = hashSeed;
         if (0 != h && k instanceof String) {
@@ -63,3 +78,8 @@ Map地图，x，y存储
 
         return null == entry ? null : entry.getValue();
     }
+
+
+
+
+![hash冲突](https://github.com/liuyanliang2015/BertNote/blob/master/pics/hash.png)
