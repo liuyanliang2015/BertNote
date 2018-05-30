@@ -386,12 +386,16 @@ D：当虚拟机启动时，用户需要指定一个要执行的主类（包含 
 
 E：当使用 JDK.7 的动态语言支持时，如果一个 java.lang.invoke.MethodHandle 实例最后的解析结果为 REF_getStatic, REF_putStatic, REF_invokeStatic 的方法句柄，并且这个方法句柄所对应的类没有进行过初始化，则需要先触发其初始化；
 
-### 1：加载
+编写的java文件，经过javac编译生成class字节码文件。
 
+
+### 1：加载
 加载是类加载的一个阶段，加载过程完成三件事：<br>
 通过一个类的全限定名来获取定义此类的二进制字节流。<br>
 将这个字节流所代表的静态存储结构转化为方法区的运行时存储结构。<br>
-在内存中生成一个代表这个类的 Class 对象，作为方法区这个类的各种数据的访问入口。<br>
+注意：这里涉及到java的一个特性：跨平台。JVM根据不同的平台开发了不同的版本。可以解释成操作系统可以识别的机器指令<br>
+
+在内存中生成一个代表这个类的Class对象(堆)，作为方法区这个类的各种数据的访问入口。<br>
 
 ### 2:验证
 确保 Class 文件的字节流中包含的信息符合当前虚拟机的要求，并且不会危害虚拟机自身的安全：
@@ -426,18 +430,35 @@ D：符号引用验证
 
 将常量池的符号引用替换为直接引用的过程。
 
+以上三个步骤(验证、准备、解析)，归纳为连接阶段
+
 ### 5：初始化
 
-初始化阶段才真正开始执行类中的定义的 Java 程序代码。初始化阶段即虚拟机执行类构造器 <clinit>() 方法的过程。
+初始化阶段才真正开始执行类中的定义的Java程序代码。初始化阶段即虚拟机执行类构造器 <clinit>() 方法的过程。
+
+
+![JVM运行流程](https://github.com/liuyanliang2015/BertNote/blob/master/pics/JVM-LIU.png)
+
+JVM的基本结构：
+
+类加载器
+
+执行引擎
+
+运行时数据区
+
+本地接口
+
+Class Files -> ClassLoader -> 运行时数据区(堆、栈、方法区等) ->执行引擎，本地库接口 ->本地方法库
 
 
 ## 七：类加载器分类
 
 A：启动类加载器（Bootstrap ClassLoader）<br>
-此类加载器负责将存放在 <JAVA_HOME>\lib 目录中的，或者被 -Xbootclasspath 参数所指定的路径中的，并且是虚拟机识别的（仅按照文件名识别，如 rt.jar，名字不符合的类库即使放在 lib 目录中也不会被加载）类库加载到虚拟机内存中。 启动类加载器无法被 Java 程序直接引用，用户在编写自定义类加载器时，如果需要把加载请求委派给启动类加载器，直接使用 null 代替即可
+此类加载器负责将存放在 <JAVA_HOME>\lib 目录中的，或者被 -Xbootclasspath 参数所指定的路径中的，并且是虚拟机识别的（仅按照文件名识别，如 rt.jar，名字不符合的类库即使放在 lib 目录中也不会被加载）类库加载到虚拟机内存中。 启动类加载器无法被 Java 程序直接引用，用户在编写自定义类加载器时，如果需要把加载请求委派给启动类加载器，直接使用 null 代替即可；
 
 B:扩展类加载器（Extension ClassLoader）<br>
-这个类加载器是由 ExtClassLoader（sun.misc.Launcher$ExtClassLoader）实现的。它负责将 <JAVA_HOME>/lib/ext 或者被 java.ext.dir 系统变量所指定路径中的所有类库加载到内存中，开发者可以直接使用扩展类加载器。
+这个类加载器是由 ExtClassLoader（sun.misc.Launcher$ExtClassLoader）实现的。它负责将 <JAVA_HOME>/lib/ext 或者被 java.ext.dir 系统变量所指定路径中的所有类库加载到内存中，开发者可以直接使用扩展类加载器；
 
 C:应用程序类加载器（Application ClassLoader）<br>
 这个类加载器是由 AppClassLoader（sun.misc.Launcher$AppClassLoader）实现的。由于这个类加载器是 ClassLoader 中的 getSystemClassLoader() 方法的返回值，因此一般称为系统类加载器。它负责加载用户类路径（ClassPath）上所指定的类库，开发者可以直接使用这个类加载器，如果应用程序中没有自定义过自己的类加载器，一般情况下这个就是程序中默认的类加载器。
