@@ -454,6 +454,8 @@ Class Files -> ClassLoader -> 运行时数据区(堆、栈、方法区等) ->执
 
 ## 七：类加载器分类
 
+这三种类加载器都继承了ClassLoader：
+
 A：启动类加载器（Bootstrap ClassLoader）<br>
 此类加载器负责将存放在 <JAVA_HOME>\lib 目录中的，或者被 -Xbootclasspath 参数所指定的路径中的，并且是虚拟机识别的（仅按照文件名识别，如 rt.jar，名字不符合的类库即使放在 lib 目录中也不会被加载）类库加载到虚拟机内存中。 启动类加载器无法被 Java 程序直接引用，用户在编写自定义类加载器时，如果需要把加载请求委派给启动类加载器，直接使用 null 代替即可；
 
@@ -462,6 +464,15 @@ B:扩展类加载器（Extension ClassLoader）<br>
 
 C:应用程序类加载器（Application ClassLoader）<br>
 这个类加载器是由 AppClassLoader（sun.misc.Launcher$AppClassLoader）实现的。由于这个类加载器是 ClassLoader 中的 getSystemClassLoader() 方法的返回值，因此一般称为系统类加载器。它负责加载用户类路径（ClassPath）上所指定的类库，开发者可以直接使用这个类加载器，如果应用程序中没有自定义过自己的类加载器，一般情况下这个就是程序中默认的类加载器。
+
+总结：
+
+BootStrap ClassLoader :  <JAVA_HOME>\lib\rt.jar
+
+Extension ClassLoader:   <JAVA_HOME>\lib\ext\*.jar
+
+Application ClassLoader: classPath
+
 
 
 ### 双亲委派机制
@@ -478,7 +489,6 @@ C:应用程序类加载器（Application ClassLoader）<br>
 有效避免了某些恶意类的加载（比如自定义了Java。lang.Object类，一般而言在双亲委派模型下会加载系统的Object类而不是自定义的Object类）<br>
 
 ![双亲委派模型](https://github.com/liuyanliang2015/BertNote/blob/master/pics/classLoader.png)
-
 
 
 ![双亲委派模型](https://github.com/liuyanliang2015/BertNote/blob/master/pics/classLoader2.png)
