@@ -81,3 +81,12 @@ nohup command &
 & 实现后台运行
 
 nohup命令可以在你退出帐户之后继续运行相应的进程。nohup就是不挂起的意思(no hang up)
+
+## 查看ip地址
+windows：ipconfig   linux：ifconfig
+
+linux上还有其他查看ip地址的命令吗？ip addr
+
+那么，ifconfig与ip addr有什么区别呢？
+
+
