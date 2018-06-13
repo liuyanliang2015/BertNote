@@ -1,0 +1,8 @@
+##SqlServer表和字段注释
+
+--为字段添加注释<br>   
+--格式如右：execute sp_addextendedproperty 'MS_Description','字段备注信息','user','dbo','table','字段所属的表名','column','添加注释的字段名'; <br>   
+
+--为表添加注释<br>   
+--格式如右：execute sp_addextendedproperty 'MS_Description','表备注信息','user','dbo','table','表名',null,null; <br>   
+
