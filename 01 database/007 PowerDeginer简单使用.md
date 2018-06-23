@@ -55,3 +55,32 @@ DataBase - > DataBase Generation
 查看导入的数据库
 
 ![jdbc](https://github.com/liuyanliang2015/BertNote/blob/master/pics/pd-14.png)
+
+## 导出数据库到powerDesigner
+
+打开pd，菜单File -> New Model -> Physical Diagram
+
+输入Model name，并选择DBMS数据库类型
+
+![pdm](https://github.com/liuyanliang2015/BertNote/blob/master/pics/pdm.png)
+
+
+选择菜单Database -> Connect -> Connection profile,选择数据库对象，如果没有，点击Configure按钮进行配置。
+
+![pdm](https://github.com/liuyanliang2015/BertNote/blob/master/pics/pdm-2.png)
+
+点击connect，如果连接成功，就可以执行导出了
+
+菜单Database -> Update Model From Database
+
+![pdm](https://github.com/liuyanliang2015/BertNote/blob/master/pics/pdm-3.png)
+
+
+选择数据库，拥有者等筛选条件
+![pdm](https://github.com/liuyanliang2015/BertNote/blob/master/pics/pdm-4.png)
+
+
+![pdm](https://github.com/liuyanliang2015/BertNote/blob/master/pics/pdm-5.png)
+
+
+
