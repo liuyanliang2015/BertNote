@@ -50,8 +50,23 @@ select  newid()  返回例如：81EB90CD-0211-4095-B8A3-948354B64836
 select top 3* from test..tb_book_order order by newid() 
 
 
-## 4、查看SqlServer连接端口号
+## 5、查看SqlServer连接端口号
 
 exec sys.sp_readerrorlog 0,1,'listening'
 
 
+## 5、SqlServer数据库设计
+
+
+常用的数据类型： <br>
+int：从-2147483648到-2147483647之间的整数（可用于标识符列）<br>
+money：货币类型，可包含小数。<br>
+decimal：小数，位数较大<br>
+float：小数<br>
+datetime：日期类型<br>
+char：可包含8000个字符<br>
+varchar：较char可存储更多字符,一般适用于英文和数字<br>
+nvarchar：较char可存储更多字符,适用中文和其他字符。<br>
+varchar(max)，可以达到2G。<br>
+binary：用于存储可达8000字节长的定长的二进制数据<br>
+image：大约可存储20亿个二进制数据<br>

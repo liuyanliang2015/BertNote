@@ -38,6 +38,23 @@
 
 
 
+设置字段属性，例如：默认值，是否可以为空等
+
+打开表设计：
+
+![jdbc](https://github.com/liuyanliang2015/BertNote/blob/master/pics/pd-15.png)
+
+双击需要定义的字段，或者右击properties
+
+选中General ->Mandatory，表示该字段不能为空。
+
+![jdbc](https://github.com/liuyanliang2015/BertNote/blob/master/pics/pd-16.png)
+
+选中Standard Checks ->Default 可以设置默认值。
+![jdbc](https://github.com/liuyanliang2015/BertNote/blob/master/pics/pd-17.png)
+
+
+
 ## 导入数据库
 
 DataBase - > DataBase Generation
