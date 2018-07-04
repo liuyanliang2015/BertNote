@@ -73,6 +73,62 @@ DataBase - > DataBase Generation
 
 ![jdbc](https://github.com/liuyanliang2015/BertNote/blob/master/pics/pd-14.png)
 
+## 导入表和字段注释到数据库
+
+Database -> Edit Current DBMS
+
+### 编辑表注释：
+
+Script -> Objects -> Column->TableComment
+
+Name：TableComment(自定义)
+
+
+Comment：Command for adding a table comment using an extended property of MS SQL Server 2000 to store object description: "MS_Description".(自定义)
+
+value：
+
+    [if exists (select 1 from  sys.extended_properties
+           where major_id = object_id('[%QUALIFIER%]%TABLE%') and minor_id = 0)
+	begin 
+	   [%OWNER%?[.O:[execute ][exec ]]sp_dropextendedproperty [%R%?[N]]'MS_Description',  
+	   [%R%?[N]]'user', [%R%?[N]]%.q:OWNER%, [%R%?[N]]'table', [%R%?[N]]%.q:TABLE% 
+	:declare @CurrentUser sysname 
+	select @CurrentUser = user_name() 
+	[.O:[execute ][exec ]]sp_dropextendedproperty [%R%?[N]]'MS_Description',  
+	   [%R%?[N]]'user', [%R%?[N]]@CurrentUser, [%R%?[N]]'table', [%R%?[N]]%.q:TABLE% 
+	] 
+	end 
+	
+	
+	][%OWNER%?[.O:[execute ][exec ]]sp_addextendedproperty [%R%?[N]]'MS_Description',  
+	   [%R%?[N]]%.q:COMMENT%, 
+	   [%R%?[N]]'user', [%R%?[N]]%.q:OWNER%, [%R%?[N]]'table', [%R%?[N]]%.q:TABLE% 
+	:select @CurrentUser = user_name() 
+	[.O:[execute ][exec ]]sp_addextendedproperty [%R%?[N]]'MS_Description',  
+	   [%R%?[N]]%.q:COMMENT%, 
+	   [%R%?[N]]'user', [%R%?[N]]@CurrentUser, [%R%?[N]]'table', [%R%?[N]]%.q:TABLE% 
+	] 
+	
+### 编辑字段注释
+
+Script -> Objects -> Column->ColumnComment
+
+Name：ColumnComment(自定义)
+
+Comment：Command for adding a column comment(自定义)
+
+value：
+
+    declare @CurrentUser sysname
+	select @CurrentUser = user_name()
+	execute sp_addextendedproperty 'MS_Description', 
+	  %.60qA:COMMENT%,
+	   'user', @CurrentUser, 'table', %TABLE% , 'column', %COLUMN% 
+	go
+
+
+
 ## 导出数据库到powerDesigner
 
 打开pd，菜单File -> New Model -> Physical Diagram
