@@ -14,14 +14,6 @@
 
 ### [07：network_security(网络安全)](https://github.com/liuyanliang2015/BertNote/tree/master/07%20network_security) <br>
 
-### [08：PM(产品经理)](https://github.com/liuyanliang2015/BertNote/tree/master/08%20PM) <br>
-
-### [09：softword(互联网软文)](https://github.com/liuyanliang2015/BertNote/tree/master/09%20softword) <br>
-
-### [10：word(word文档)](https://github.com/liuyanliang2015/BertNote/tree/master/10%20word) <br>
-
-### [11：conding_standard(代码规范)](https://github.com/liuyanliang2015/BertNote/tree/master/11%20coding_standard) <br>
-
-### [12：linux(linux相关)](https://github.com/liuyanliang2015/BertNote/tree/master/12%20linux) <br>
+### [08：linux(linux相关)](https://github.com/liuyanliang2015/BertNote/tree/master/12%20linux) <br>
 
 
