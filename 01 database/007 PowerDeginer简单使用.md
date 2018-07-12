@@ -173,11 +173,27 @@ Report -> Report Templates
 
 在左边找到Table -> List of Table Columns
 
-右边选中，右击设置layout
+右边选中，右击设置layout设置布局
+
+show title设置是否显示表清单
+
+Edit title可以设置表清单格式 【表%PARENT%的栏的清单】
 
 ![pdm](https://github.com/liuyanliang2015/BertNote/blob/master/pics/pd-21.png)
 
 选择列：代码属性、注释、数据类型、长度、是否可为空
+
+
+
+
+另外，右击模板名称，可以设置模板的页眉和页脚
+
+![pdm](https://github.com/liuyanliang2015/BertNote/blob/master/pics/pd-24.png)
+
+右击table item，可以Edit title可以设置表的显示
+
+![pdm](https://github.com/liuyanliang2015/BertNote/blob/master/pics/pd-25.png)
+
 
 保存模板。
 
