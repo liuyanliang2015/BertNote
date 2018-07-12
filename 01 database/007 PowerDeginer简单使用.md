@@ -156,4 +156,42 @@ value：
 ![pdm](https://github.com/liuyanliang2015/BertNote/blob/master/pics/pdm-5.png)
 
 
+## powerdesigner模型导出到word
+
+Report -> Report Templates
+
+
+![pdm](https://github.com/liuyanliang2015/BertNote/blob/master/pics/pd-18.png)
+
+点击上方的图标，新建模板
+
+![pdm](https://github.com/liuyanliang2015/BertNote/blob/master/pics/pd-19.png)
+
+输入模板名称，选择类型：Physical Data Model
+
+![pdm](https://github.com/liuyanliang2015/BertNote/blob/master/pics/pd-20.png)
+
+在左边找到Table -> List of Table Columns
+
+右边选中，右击设置layout
+
+![pdm](https://github.com/liuyanliang2015/BertNote/blob/master/pics/pd-21.png)
+
+选择列：代码属性、注释、数据类型、长度、是否可为空
+
+保存模板。
+
+
+然后可以导出模型到word了：
+
+Report -> Generate Report 
+
+![pdm](https://github.com/liuyanliang2015/BertNote/blob/master/pics/pd-22.png)
+
+
+![pdm](https://github.com/liuyanliang2015/BertNote/blob/master/pics/pd-23.png)
+
+
+
+
 
